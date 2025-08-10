@@ -20,6 +20,25 @@
   --spacing-standard: 16px;
   --spacing-large: 24px;
 
+  --font-satoshi-bold: "Satoshi-Bold", sans-serif;
+  --font-satoshi-medium: "Satoshi-Medium", sans-serif;
+
+  --text-display-extraLarge-size: 40px;
+  --text-display-large-size: 36px;
+  --text-display-medium-size: 32px;
+  --text-display-small-size: 28px;
+
+  --text-title-large-size: 24px;
+  --text-title-medium-size: 20px;
+
+  --text-body-large-size: 18px;
+  --text-body-medium-size: 16px;
+  --text-body-small-size: 14px;
+
+  --text-label-large-size: 12px;
+  --text-label-medium-size: 10px;
+  --text-label-small-size: 8px;
+
   --color-background-light-50: #F2F2F7;
   --color-background-light-100: #FFFFFF;
   --color-background-light-200: #E5E5EA;
@@ -48,8 +67,153 @@
   --color-brand-blue-900: #001832;
 }
 
+
+@utility text-display-extraLarge {
+  font-size: var(--text-display-extraLarge-size);
+  font-family: var(--font-satoshi-bold);
+}
+
+@utility text-display-large {
+  font-size: var(--text-display-large-size);
+  font-family: var(--font-satoshi-bold);
+}
+
+@utility text-display-medium {
+  font-size: var(--text-display-medium-size);
+  font-family: var(--font-satoshi-bold);
+}
+
+@utility text-display-small {
+  font-size: var(--text-display-small-size);
+  font-family: var(--font-satoshi-bold);
+}
+
+@utility text-title-large {
+  font-size: var(--text-title-large-size);
+  font-family: var(--font-satoshi-bold);
+}
+
+@utility text-title-medium {
+  font-size: var(--text-title-medium-size);
+  font-family: var(--font-satoshi-medium);
+}
+
+@utility text-body-large {
+  font-size: var(--text-body-large-size);
+  font-family: var(--font-satoshi-bold);
+}
+
+@utility text-body-medium-bold {
+  font-size: var(--text-body-medium-size);
+  font-family: var(--font-satoshi-bold);
+}
+
+@utility text-body-medium {
+  font-size: var(--text-body-medium-size);
+  font-family: var(--font-satoshi-medium);
+}
+
+@utility text-body-small {
+  font-size: var(--text-body-small-size);
+  font-family: var(--font-satoshi-medium);
+}
+
+@utility text-label-large {
+  font-size: var(--text-label-large-size);
+  font-family: var(--font-satoshi-medium);
+}
+
+@utility text-label-medium {
+  font-size: var(--text-label-medium-size);
+  font-family: var(--font-satoshi-bold);
+}
+
+@utility text-label-small {
+  font-size: var(--text-label-small-size);
+  font-family: var(--font-satoshi-bold);
+}
+
+@font-face {
+  font-family: 'Satoshi-Light';
+  src: url('../fonts/Satoshi-Light.woff2') format('woff2'),
+       url('../fonts/Satoshi-Light.woff') format('woff'),
+       url('../fonts/Satoshi-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Satoshi-Regular';
+  src: url('../fonts/Satoshi-Regular.woff2') format('woff2'),
+       url('../fonts/Satoshi-Regular.woff') format('woff'),
+       url('../fonts/Satoshi-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Satoshi-Medium';
+  src: url('../fonts/Satoshi-Medium.woff2') format('woff2'),
+       url('../fonts/Satoshi-Medium.woff') format('woff'),
+       url('../fonts/Satoshi-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Satoshi-Bold';
+  src: url('../fonts/Satoshi-Bold.woff2') format('woff2'),
+       url('../fonts/Satoshi-Bold.woff') format('woff'),
+       url('../fonts/Satoshi-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Satoshi-Black';
+  src: url('../fonts/Satoshi-Black.woff2') format('woff2'),
+       url('../fonts/Satoshi-Black.woff') format('woff'),
+       url('../fonts/Satoshi-Black.ttf') format('truetype');
+  font-weight: 900;
+  font-display: swap;
+  font-style: normal;
+}
+/**
+* This is a variable font
+* You can control variable axes as shown below:
+* font-variation-settings: wght 900.0;
+*
+* available axes:
+'wght' (range from 300.0 to 900.0
+*/
+@font-face {
+  font-family: 'Satoshi-Variable';
+  src: url('../fonts/Satoshi-Variable.woff2') format('woff2'),
+       url('../fonts/Satoshi-Variable.woff') format('woff'),
+       url('../fonts/Satoshi-Variable.ttf') format('truetype');
+  font-weight: 300 900;
+  font-display: swap;
+  font-style: normal;
+}
+/**
+* This is a variable font
+* You can control variable axes as shown below:
+* font-variation-settings: wght 900.0;
+*
+* available axes:
+'wght' (range from 300.0 to 900.0
+*/
+@font-face {
+  font-family: 'Satoshi-VariableItalic';
+  src: url('../fonts/Satoshi-VariableItalic.woff2') format('woff2'),
+       url('../fonts/Satoshi-VariableItalic.woff') format('woff'),
+       url('../fonts/Satoshi-VariableItalic.ttf') format('truetype');
+  font-weight: 300 900;
+  font-display: swap;
+  font-style: italic;
+}
+
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
