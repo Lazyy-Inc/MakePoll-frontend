@@ -1,11 +1,12 @@
 import { useState } from 'react'
 import { CheckboxView } from './components/checkbox.view'
+import { QuestionPollFieldView } from './components/textfields/questionpollfield.view'
 import { TextFieldView } from './components/textfields/textfield.view'
 import './styles/App.css'
 
 function App() {
 
-  
+  const [question, setQuestion] = useState('')
   const [textFieldValue, setTextFieldValue] = useState(['', ''])
   const [isSelected, setIsSelected] = useState(false)
 
@@ -16,9 +17,13 @@ function App() {
   }
 
   return (
-    <div className='flex flex-col gap-extraLarge w-screen min-h-screen p-large'>
-      <p className='text-title-large p-standard rounded-small'>Make Poll</p>
-      <div className='flex flex-col gap-standard'>
+    <div className='flex flex-col items-center gap-extraLarge w-screen min-h-screen p-large'>
+      <QuestionPollFieldView 
+        initialValue={question}
+        onChange={(value) => setQuestion(value)}
+      />
+
+      <div className='flex flex-col gap-standard w-full'>
         {textFieldValue.map((value, index) => (
         <TextFieldView
           key={index}
