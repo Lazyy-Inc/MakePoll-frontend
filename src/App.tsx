@@ -9,10 +9,7 @@ function App() {
   return (
     <div className='flex flex-col gap-large'>
       <p className='text-title-large p-standard rounded-small'>Make Poll</p>
-      <CheckboxView
-        initialValue={isSelected}
-        onChange={setIsSelected} 
-      />
+      <CheckboxView initialValue={isSelected} onChange={setIsSelected} />
     </div>
   )
 }
