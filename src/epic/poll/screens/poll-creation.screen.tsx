@@ -1,6 +1,8 @@
 import { useState } from "react"
-import plusIcon from '../../../assets/white/iconPlus.svg'
+import plusIconBlack from '../../../assets/iconPlus.svg'
+import plusIconWhite from '../../../assets/white/iconPlus.svg'
 import { ActionButtonView } from "../../../components/buttons/action-button.view"
+import { SmallActionButtonView } from "../../../components/buttons/small-action-button.view"
 import { TextFieldView } from "../../../components/textfields/textfield.view"
 import { QuestionPollFieldView } from "../views/questionpollfield.view"
 
@@ -31,11 +33,18 @@ export const PollCreationScreen = () => {
           />
         ))
         }
+        <div className='flex w-full justify-end'>
+          <SmallActionButtonView
+            label='Ajouter une option'
+            rightIcon={plusIconBlack}
+            onClick={() => setTextFieldValue([...textFieldValue, ''])}
+          />
+        </div>
       </div>
 
-      <ActionButtonView 
+      <ActionButtonView
         label='Créer le sondage'
-        rightIcon={plusIcon}
+        rightIcon={plusIconWhite}
         onClick={() => console.log('Poll created with question:', question, 'and options:', textFieldValue)}
       />
     </div>
