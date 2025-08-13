@@ -1,6 +1,8 @@
 import { useState } from "react"
-import { QuestionPollFieldView } from "../views/questionpollfield.view"
+import plusIcon from '../../../assets/white/iconPlus.svg'
+import { ActionButtonView } from "../../../components/buttons/action-button.view"
 import { TextFieldView } from "../../../components/textfields/textfield.view"
+import { QuestionPollFieldView } from "../views/questionpollfield.view"
 
 export const PollCreationScreen = () => {
 
@@ -30,6 +32,12 @@ export const PollCreationScreen = () => {
         ))
         }
       </div>
+
+      <ActionButtonView 
+        label='Créer le sondage'
+        rightIcon={plusIcon}
+        onClick={() => console.log('Poll created with question:', question, 'and options:', textFieldValue)}
+      />
     </div>
   )
 }
