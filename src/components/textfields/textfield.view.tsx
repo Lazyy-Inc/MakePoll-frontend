@@ -2,10 +2,11 @@ import { useState } from 'react';
 
 interface Props {
   initialValue: string;
+  withIndicator?: boolean;
   onChange: (value: string) => void;
 }
 
-export const TextFieldView = ({ initialValue, onChange }: Props) => {
+export const TextFieldView = ({ initialValue, withIndicator = true, onChange }: Props) => {
   const [value, setValue] = useState(initialValue)
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -24,11 +25,13 @@ export const TextFieldView = ({ initialValue, onChange }: Props) => {
         placeholder="Option"
       />
 
-      { value ? (
-        <p>✅</p>
-      ) : (
-        <p>❌</p>
-      )} 
+      {withIndicator == true && (
+        value != "" ? (
+          <p>✅</p>
+        ) : (
+          <p>❌</p>
+        )
+      )}
 
     </div>
   )
