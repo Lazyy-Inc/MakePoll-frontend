@@ -21,7 +21,7 @@ export const SettingsCheckboxView = ({ text, initialValue, onChange }: Props) =>
     <div className="flex flex-row w-full">
       <p className="text-body-medium text-background-dark-400 w-full text-left">{ text }</p>
       <CheckboxView 
-        initialValue={isSelected}
+        isSelected={isSelected}
         onChange={handleToggle}
       />
     </div>
