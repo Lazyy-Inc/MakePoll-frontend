@@ -4,6 +4,7 @@ import plusIconWhite from '../../../assets/white/iconPlus.svg'
 import { ActionButtonView } from "../../../components/buttons/action-button.view"
 import { SmallActionButtonView } from "../../../components/buttons/small-action-button.view"
 import { TextFieldView } from "../../../components/textfields/textfield.view"
+import { PollService } from "../networks/poll.service"
 import { QuestionPollFieldView } from "../views/questionpollfield.view"
 
 export const PollCreationScreen = () => {
@@ -45,7 +46,17 @@ export const PollCreationScreen = () => {
       <ActionButtonView
         label='Créer le sondage'
         rightIcon={plusIconWhite}
-        onClick={() => console.log('Poll created with question:', question, 'and options:', textFieldValue)}
+        onClick={ async () => {
+          const response = await PollService.createPoll({
+            question,
+            options: textFieldValue,
+            possibleAnswers: 1,
+            isCaptchaEnabled: false,
+            endDate: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString(),
+            areResultsHidden: false
+          })
+          navigator.clipboard.writeText(`https://poll.lazyy.fr/votes-poll/${response.poll.id}`)
+        }}
       />
     </div>
   )
