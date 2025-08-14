@@ -2,21 +2,13 @@ export class PollOptionModel {
   id: string;
   text: string;
   isSelected: boolean;
+  votes: number;
 
-  constructor(id: string, text: string, isSelected: boolean = false) {
+  constructor(id: string, text: string, isSelected: boolean = false, votes: number) {
     this.id = id;
     this.text = text;
     this.isSelected = isSelected;
+    this.votes = votes;
   }
-
-  static mock1 = new PollOptionModel(
-    "mock-id",
-    "Blue"
-  )
-
-  static mock2 = new PollOptionModel(
-    "mock-id-2",
-    "Red"
-  )
 
 }

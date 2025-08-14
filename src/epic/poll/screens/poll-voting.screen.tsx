@@ -61,7 +61,12 @@ export const PollVottingScreen = ({ id }: Props) => {
       <ActionButtonView
         label='Envoyer le vote'
         rightIcon={iconPaperPlaneWhite}
-        onClick={() => console.log('Vote submitted for options:', stateOptions.filter(option => option.isSelected).map(option => option.text))}
+        onClick={ async () => {
+          await PollService.vote(
+            poll?.id ?? "",
+            { optionsIds: stateOptions.filter(option => option.isSelected).map(option => option.id) }
+          );
+        }}
       />
     </div>
   )

@@ -5,6 +5,10 @@ export class NetworkPath {
       return `/polls/${pollId}`;
     }
 
+    static vote(pollId: string) {
+      return `/polls/${pollId}/answer`;
+    }
+    
     static createPoll() {
       return `/polls`;
     }

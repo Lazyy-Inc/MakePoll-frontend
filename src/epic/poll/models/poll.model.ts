@@ -6,6 +6,7 @@ export class PollModel {
   pollDuration: number;
   createdAt: Date;
   question: string;
+  totalVotes: number;
   options: PollOptionModel[];
 
   constructor(
@@ -14,6 +15,7 @@ export class PollModel {
     pollDuration: number,   
     createdAt: Date,
     question: string,
+    totalVotes: number,
     options: PollOptionModel[]
   ) {
     this.id = id;
@@ -21,18 +23,7 @@ export class PollModel {
     this.pollDuration = pollDuration;
     this.createdAt = createdAt;
     this.question = question;
+    this.totalVotes = totalVotes;
     this.options = options;
   }
-
-  static mock1 = new PollModel(
-    "mock-poll-id",
-    1,
-    3600,
-    new Date(),
-    "What is your favorite color?",
-    [
-      PollOptionModel.mock1,
-      PollOptionModel.mock2
-    ]
-  );
 }
