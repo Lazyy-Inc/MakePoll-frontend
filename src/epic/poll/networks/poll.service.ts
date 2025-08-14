@@ -1,6 +1,6 @@
 import axiosClient from "../../../network/axios-client";
 import { NetworkPath } from "../../../network/network-path";
-import type { PollModel } from "./models/poll.model";
+import type { PollModel } from "../models/poll.model";
 
 export class PollService {
     

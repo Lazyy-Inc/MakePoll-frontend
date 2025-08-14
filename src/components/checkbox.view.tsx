@@ -1,23 +1,18 @@
-import { useState } from 'react'
 import iconCheck from '../assets/white/iconCheck.svg'
 
 interface Props {
-  initialValue: boolean
+  isSelected: boolean
   onChange: (value: boolean) => void
 }
 
-export const CheckboxView = ({ initialValue = false, onChange }: Props) => {
-  const [isSelected, setIsSelected] = useState(initialValue)
-  
+export const CheckboxView = ({ isSelected, onChange }: Props) => {
   const handleToggle = () => {
-    const newValue = !isSelected
-    setIsSelected(newValue)
-    onChange?.(newValue)
+    onChange(!isSelected)
   }
 
   return (
     <div 
-      className={`${isSelected ? `bg-blue-500 border-blue-700` : `bg-background-light-200 border-background-light-300`} w-[28px] h-[28px] rounded-small border-1 cursor-pointer justify-center items-center flex`}
+      className={`${isSelected ? `bg-blue-500 border-blue-700` : `bg-background-light-100 border-background-light-300`} w-[28px] h-[28px] rounded-small border-1 cursor-pointer justify-center items-center flex`}
       onClick={handleToggle}
     >
       <img 
