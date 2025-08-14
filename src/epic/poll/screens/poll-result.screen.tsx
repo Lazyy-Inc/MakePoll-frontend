@@ -8,7 +8,7 @@ interface Props {
 
 export const PollResultsScreen = ({ poll }: Props) => {
   return (
-    <div className='flex flex-col items-center gap-extraLarge p-large w-full'>
+    <div className='flex flex-col items-center gap-extraLarge p-large w-screen min-h-screen'>
       <p className="text-title-large text-background-dark-50 focus:outline-none">{poll.question}</p>
       <div className="flex flex-col gap-standard w-full max-w-2xl">
           <PollResultView
