@@ -21,7 +21,7 @@ export const TextFieldView = ({ initialValue, withIndicator = true, onChange }: 
         type="text"
         value={value}
         onChange={handleChange}
-        className="text-body-medium focus:outline-none w-full"
+        className={`text-body-medium focus:outline-none w-full ${value === "" ? "text-background-dark-400" : "text-background-dark-50"}`}
         placeholder="Option"
       />
 

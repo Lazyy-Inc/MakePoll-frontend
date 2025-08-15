@@ -26,7 +26,7 @@ export const PollResultsScreen = ({ id }: Props) => {
     }, [id]);
 
   return (
-    <div className='flex flex-col items-center gap-extraLarge p-large w-screen min-h-screen'>
+    <div className='flex flex-col items-center gap-extraLarge p-large w-screen min-h-screen bg-background-light-100'>
       <p className="text-title-large text-background-dark-50 focus:outline-none">{poll?.question}</p>
       <div className="flex flex-col gap-standard w-full max-w-2xl">
           {

@@ -19,7 +19,7 @@ export const PollCreationScreen = () => {
   }
 
   return (
-    <div className='flex flex-col items-center gap-extraLarge p-large w-full'>
+    <div className='flex flex-col items-center gap-extraLarge p-large w-full min-h-screen bg-background-light-100'>
       <QuestionPollFieldView
         initialValue={question}
         onChange={(value) => setQuestion(value)}
