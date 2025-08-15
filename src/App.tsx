@@ -9,7 +9,7 @@ export const App = observer(() => {
   const bannerManager = BannerManager.shared
 
   return (
-    <div className='flex flex-row w-screen min-h-screen relative'>
+    <div className='flex flex-col md:flex-row w-screen min-h-screen relative'>
       {bannerManager.banner && (
         <BannerView banner={bannerManager.banner} />
       )}
