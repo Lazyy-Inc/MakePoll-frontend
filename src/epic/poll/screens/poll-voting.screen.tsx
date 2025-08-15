@@ -1,3 +1,4 @@
+import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import iconPaperPlaneWhite from '../../../assets/white/iconPaperPlane.svg';
 import { ActionButtonView } from "../../../components/buttons/action-button.view";
@@ -14,6 +15,7 @@ export const PollVottingScreen = ({ id }: Props) => {
 
   const [poll, setPoll] = useState<PollModel | undefined>(undefined);
   const [stateOptions, setStateOptions] = useState<PollOptionModel[]>([]);
+  const [hasUserVoted, setHasUserVoted] = useState(false);
 
   useEffect(() => {
     const fetchPoll = async () => {
@@ -25,6 +27,10 @@ export const PollVottingScreen = ({ id }: Props) => {
         console.error('Error fetching poll:', error);
       }
     };
+
+    // Vérifier si l'utilisateur a déjà voté
+    const votedPolls = JSON.parse(localStorage.getItem('votedPolls') || '[]');
+    setHasUserVoted(votedPolls.includes(id));
 
     fetchPoll();
   }, [id]);
@@ -45,6 +51,15 @@ export const PollVottingScreen = ({ id }: Props) => {
     }
   };
 
+  const addPollToVotedList = (pollId: string) => {
+    const votedPolls = JSON.parse(localStorage.getItem('votedPolls') || '[]');
+    if (!votedPolls.includes(pollId)) {
+      votedPolls.push(pollId);
+      localStorage.setItem('votedPolls', JSON.stringify(votedPolls));
+      setHasUserVoted(true); // Mettre à jour l'état local
+    }
+  };
+
   return (
     <div className='flex flex-col items-center gap-extraLarge p-large w-screen min-h-screen bg-background-light-100'>
       <p className="text-title-large text-background-dark-50 focus:outline-none">{poll?.question}</p>
@@ -58,16 +73,29 @@ export const PollVottingScreen = ({ id }: Props) => {
           />
         ))}
       </div>
-      <ActionButtonView
-        label='Envoyer le vote'
-        rightIcon={iconPaperPlaneWhite}
-        onClick={ async () => {
-          await PollService.vote(
-            poll?.id ?? "",
-            { optionsIds: stateOptions.filter(option => option.isSelected).map(option => option.id) }
-          );
-        }}
-      />
+      {hasUserVoted ? (
+        <Link
+          params={{ id: poll?.id ?? "" }}
+          to="/results-poll/$id"
+          className="decoration-0 flex flex-row gap-small p-standard rounded-standard text-body-large items-center justify-center bg-blue-500 text-white cursor-pointer hover:bg-blue-600 transition-colors"
+        >
+          Voir les résultats du sondage
+        </Link>
+      ) : (
+        <ActionButtonView
+          label='Envoyer le vote'
+          rightIcon={iconPaperPlaneWhite}
+          onClick={async () => {
+            await PollService.vote(
+              poll?.id ?? "",
+              { optionsIds: stateOptions.filter(option => option.isSelected).map(option => option.id) }
+            );
+
+            addPollToVotedList(poll?.id ?? "");
+          }}
+        />
+      )}
+
     </div>
   )
 }

@@ -12,38 +12,12 @@ export const PollCreationScreen = () => {
 
   const [question, setQuestion] = useState('')
   const [textFieldValue, setTextFieldValue] = useState(['', ''])
+  const [pollUrl, setPollUrl] = useState('')
 
   const handleTextFieldChange = (index: number, value: string) => {
     const newValues = [...textFieldValue]
     newValues[index] = value
     setTextFieldValue(newValues)
-  }
-
-  const copyToClipboard = async (text: string) => {
-    try {
-      // Essayer d'abord l'API moderne
-      if (navigator.clipboard && window.isSecureContext) {
-        await navigator.clipboard.writeText(text)
-        return true
-      }
-      
-      // Fallback pour iOS et autres navigateurs
-      const textArea = document.createElement('textarea')
-      textArea.value = text
-      textArea.style.position = 'fixed'
-      textArea.style.left = '-999999px'
-      textArea.style.top = '-999999px'
-      document.body.appendChild(textArea)
-      textArea.focus()
-      textArea.select()
-      
-      const result = document.execCommand('copy')
-      document.body.removeChild(textArea)
-      return result
-    } catch (error) {
-      console.error('Erreur lors de la copie:', error)
-      return false
-    }
   }
 
   return (
@@ -84,18 +58,15 @@ export const PollCreationScreen = () => {
             areResultsHidden: false
           })
           const pollUrl = `https://poll.lazyy.fr/votes-poll/${response.poll.id}`
-          const success = await copyToClipboard(pollUrl)
-          
-          if (success) {
-            BannerManager.shared.pushBanner({ text: 'Lien du sondage copié dans le presse-papiers', type: 'success' })
-            // Optionnel : afficher une notification de succès
-            console.log('Lien copié avec succès')
-          } else {
-            // Optionnel : afficher le lien à l'utilisateur pour copie manuelle
-            console.log('Impossible de copier automatiquement:', pollUrl)
-          }
+          setPollUrl(pollUrl)
+          BannerManager.shared.pushBanner({ text: `Sondage créé avec succès !`, type: 'success' })
+          await navigator.clipboard.writeText(pollUrl)         
         }}
       />
+
+      { pollUrl && (
+        <p>{ pollUrl }</p>
+      )}
     </div>
   )
 }
