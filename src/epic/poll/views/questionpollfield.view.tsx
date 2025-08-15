@@ -19,7 +19,7 @@ export const QuestionPollFieldView = ({ initialValue, onChange }: Props) => {
       type="text"
       value={value}
       onChange={handleChange}
-      className="text-title-large text-background-dark-400 focus:outline-none"
+      className={`text-title-large ${value === "" ? "text-background-dark-400" : "text-background-dark-50"} focus:outline-none w-full text-center`}
       placeholder="Question du sondage ..."
     />
   )

@@ -4,7 +4,7 @@ import './styles/App.css'
 
 function App() {
   return (
-    <div className='flex flex-row w-screen min-h-screen'>
+    <div className='flex flex-col md:flex-row w-screen min-h-screen'>
       <PollCreationScreen />
       <SettingsScreen />
     </div>
